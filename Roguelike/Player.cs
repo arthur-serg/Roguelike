@@ -8,18 +8,18 @@ namespace Roguelike
     {
         public delegate void Move();
 
-        private Move movePlayer;
+        public static Move movePlayer;
 
         private List<Loot> bag = new List<Loot>(BagCapacityLimit);
         public static int BagCapacityLimit = 100;
 
         public int BagCapacity { get; set; } = Level.seed.Next(BagCapacityLimit);
 
-        public (int, int) Position { get; set; } = (0, 0);
+        public static (int x, int y) Position { get; set; }
 
         public Player() 
         {
-            Position = (Level.seed.Next(Level.Width) , Level.seed.Next(Level.Height));
+            Position = (Level.seed.Next(Level.X) , Level.seed.Next(Level.Y));
             
             bag.Capacity = BagCapacity;
             Level.GetLevelState();
@@ -27,39 +27,77 @@ namespace Roguelike
             
         }
 
+        public bool IsStepPossible((int x, int y) position) => position.x >= 0 && position.y <= Level.Y;
+
         public void GetPlayerState() => Console.WriteLine($"Player is here: {Position} with {BagCapacity} / {BagCapacityLimit} bag");
 
-        public void MoveNorth() => Position = (Position.Item1 + 1, Position.Item2);
+        public static void MoveUp() => Position = (Position.x + 1, Position.y);
 
-        public void MoveEast() => Position = (Position.Item1, Position.Item2+1);
+        public static void MoveRight() => Position = (Position.x, Position.y + 1);
 
-        public void MoveSouth() => Position = (Position.Item1 -1, Position.Item2);
+        public static void MoveDown() => Position = (Position.x - 1, Position.y);
 
-        public void MoveWest() => Position = (Position.Item1, Position.Item2-1);
+        public static void MoveLeft() => Position = (Position.x, Position.y - 1);
 
-        public void ChangePlayerPosition()
+        public static void Pick()
         {
-            ConsoleKey key = Console.ReadKey().Key;
-            while (key!=ConsoleKey.Escape)
-            {
-                key = Console.ReadKey().Key;
-                switch (key)
-                {
-                    case ConsoleKey.N:
-                        movePlayer = MoveNorth;
-                        continue;
-                    case ConsoleKey.E:
-                        movePlayer = MoveEast;
-                        continue;
-                    case ConsoleKey.W:
-                        movePlayer = MoveWest;
-                        continue;
-                    case ConsoleKey.S:
-                        movePlayer = MoveSouth;
-                        continue;
-                }
-            }
+
+        }
+
+        public static void LookAround()
+        {
+
+        }
+
+        public static void Eat()
+        {
+
+        }
+
+        //public void ChangePlayerPosition()
+        //{
+        //    ConsoleKey key = Console.ReadKey().Key;
             
+        //    //TO DO: словарь строка-действие
+        //    //       сообщение, что пройти невозможно, если упёрлись в стенку, либо ограничения на кол-во столкновений. =)
+        //    while (IsStepPossible(Position))
+        //    {
+        //        while (key != ConsoleKey.Escape)
+        //        {
+        //            key = Console.ReadKey().Key;
+        //            switch (key)
+        //            {
+        //                case ConsoleKey.UpArrow:
+        //                    movePlayer = MoveUp;
+        //                    movePlayer.Invoke();
+        //                    GetPlayerState();
+        //                    break;
+        //                case ConsoleKey.LeftArrow:
+        //                    movePlayer = MoveRight;
+        //                    movePlayer.Invoke();
+        //                    GetPlayerState();
+        //                    break;
+        //                case ConsoleKey.RightArrow:
+        //                    movePlayer = MoveLeft;
+        //                    movePlayer.Invoke();
+        //                    GetPlayerState();
+        //                    break;
+        //                case ConsoleKey.DownArrow:
+        //                    movePlayer = MoveDown;
+        //                    movePlayer.Invoke();
+        //                    GetPlayerState();
+        //                    break;
+        //            }
+        //        }
+        //    }
+            
+            
+        //}
+
+        public void ChangePlayerState()
+        {
+            string cmd = Console.ReadLine();
+
         }
     }
 }
