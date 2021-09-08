@@ -6,7 +6,9 @@ namespace Roguelike
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
+            Level level = new Level();
+            
         }
     }
 }
