@@ -12,20 +12,20 @@ namespace Roguelike
 
         public static Random seed = new Random();
 
-        public static int Width { get; private set; } = seed.Next(1, 11);
-        public static int Height { get; private set; } = seed.Next(1, 11);
+        public static int X { get; private set; } = seed.Next(1, 11);
+        public static int Y { get; private set; } = seed.Next(1, 11);
 
-        public static Room[,] Rooms = new Room[Width, Height];
+        public static Room[,] Rooms = new Room[X, Y];
 
         Player player = new Player();
 
         public Level()
         {
             
-            player.Position = (Width, Height);
             
+            player.ChangePlayerPosition();
         }
 
-        public static void GetLevelState() => Console.WriteLine($"{Width} by {Height} level inited.");
+        public static void GetLevelState() => Console.WriteLine($"{X} by {Y} level inited.");
     }
 }
