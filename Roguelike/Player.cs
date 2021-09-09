@@ -4,24 +4,20 @@ using System.Collections.Generic;
 
 namespace Roguelike
 {
-    internal class Player
+    internal class Player : AliveObject
     {
-        public delegate void Move();
 
-        public static Move movePlayer;
-
-        private List<Loot> bag = new List<Loot>(BagCapacityLimit);
+        private List<Loot> bag = new(BagCapacityLimit);
         public static int BagCapacityLimit = 100;
 
-        public int BagCapacity { get; set; } = Level.seed.Next(BagCapacityLimit);
+        public int CurrentBagCapacity { get; set; } = Level.seed.Next(BagCapacityLimit);
 
         public static (int x, int y) Position { get; set; }
 
         public Player() 
         {
-            Position = (Level.seed.Next(Level.X) , Level.seed.Next(Level.Y));
-            
-            bag.Capacity = BagCapacity;
+            Position = (Level.seed.Next(0, Level.X + 1), Level.seed.Next(0, Level.Y + 1));
+            bag.Capacity = CurrentBagCapacity;
             Level.GetLevelState();
             GetPlayerState();
             
@@ -29,7 +25,7 @@ namespace Roguelike
 
         public bool IsStepPossible((int x, int y) position) => position.x >= 0 && position.y <= Level.Y;
 
-        public void GetPlayerState() => Console.WriteLine($"Player is here: {Position} with {BagCapacity} / {BagCapacityLimit} bag");
+        public void GetPlayerState() => Console.WriteLine($"Player is here: {Position} with {CurrentBagCapacity} / {BagCapacityLimit} bag");
 
         public static void MoveUp() => Position = (Position.x + 1, Position.y);
 
@@ -54,49 +50,13 @@ namespace Roguelike
 
         }
 
-        //public void ChangePlayerPosition()
-        //{
-        //    ConsoleKey key = Console.ReadKey().Key;
-            
-        //    //TO DO: словарь строка-действие
-        //    //       сообщение, что пройти невозможно, если упёрлись в стенку, либо ограничения на кол-во столкновений. =)
-        //    while (IsStepPossible(Position))
-        //    {
-        //        while (key != ConsoleKey.Escape)
-        //        {
-        //            key = Console.ReadKey().Key;
-        //            switch (key)
-        //            {
-        //                case ConsoleKey.UpArrow:
-        //                    movePlayer = MoveUp;
-        //                    movePlayer.Invoke();
-        //                    GetPlayerState();
-        //                    break;
-        //                case ConsoleKey.LeftArrow:
-        //                    movePlayer = MoveRight;
-        //                    movePlayer.Invoke();
-        //                    GetPlayerState();
-        //                    break;
-        //                case ConsoleKey.RightArrow:
-        //                    movePlayer = MoveLeft;
-        //                    movePlayer.Invoke();
-        //                    GetPlayerState();
-        //                    break;
-        //                case ConsoleKey.DownArrow:
-        //                    movePlayer = MoveDown;
-        //                    movePlayer.Invoke();
-        //                    GetPlayerState();
-        //                    break;
-        //            }
-        //        }
-        //    }
-            
-            
-        //}
+        
+        //TO DO: словарь строка-действие
 
         public void ChangePlayerState()
         {
             string cmd = Console.ReadLine();
+
 
         }
     }

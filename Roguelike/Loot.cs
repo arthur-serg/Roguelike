@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Roguelike
 {
-    internal class Loot : Level
+    internal class Loot : NonLivingObject
     {
         public string Name { get; set; }
         public int Capacity { get; }
@@ -12,7 +12,7 @@ namespace Roguelike
         public Loot()
         {
             Name = "loot";
-            Capacity = seed.Next(Player.BagCapacityLimit / 2);
+            Capacity = Level.seed.Next(Player.BagCapacityLimit / 2);
         }
     }
 }

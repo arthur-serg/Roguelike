@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Roguelike
 {
-    internal class Room : Level
+    internal class Room : GameObject
     {
-        public (int, int) RoomPosition { get; set; }
+        public (int x, int y) RoomPosition { get; set; }
         public Room()
         {
             
