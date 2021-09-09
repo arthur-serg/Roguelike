@@ -6,12 +6,13 @@ namespace Roguelike
 {
     internal class Loot : NonLivingObject
     {
-        public string Name { get; set; }
+        public new string ID { get; private set; } = "Loot";
+
+        public new string Name { get; private set; } = "unknown";
         public int Capacity { get; }
 
         public Loot()
         {
-            Name = "loot";
             Capacity = Level.seed.Next(Player.BagCapacityLimit / 2);
         }
     }

@@ -6,70 +6,53 @@ namespace Roguelike
 {
     internal class Player : AliveObject
     {
-
+        public new string ID { get; private set; } = "Player";
         private List<Loot> bag = new(BagCapacityLimit);
         public static int BagCapacityLimit = 100;
-        private static (int x, int y) initialPosition = new Room().CurrentRoom;
+        private static (int x, int y) initialPlayerCoords = new Room().CurrentRoomCoords;
         public int CurrentBagCapacity { get; set; } = Level.seed.Next(BagCapacityLimit);
 
-        public static (int x, int y) Position { get; set; } = initialPosition;
-        //{
-        //    get => (initialPosition.x, initialPosition.y);
-            
-        //    set
-        //    {
-        //        initialPosition.x = value.x;
-        //        initialPosition.y = value.y;
-        //    }
-        //}
+        public static (int x, int y) PlayerCoords { get; set; } = initialPlayerCoords;
 
 
-
-        public Player() 
+        public Player()
         {
-            Level.GetLevelState();
             GetPlayerState();
-            
         }
 
-        public void Init(in Room initialPosition)
+        public void Init(in Room initialPlayerPosition)
         {
-            Position = Player.initialPosition;
+            Room location = new Room();
+            PlayerCoords = initialPlayerPosition.CurrentRoomCoords;
         }
 
-        public void GetPlayerState() => Console.WriteLine($"Player is here: {Position} with {CurrentBagCapacity} / {BagCapacityLimit} bag");
+        public void GetPlayerState() =>
+            Console.WriteLine($"Player's coords: {PlayerCoords} bag: {CurrentBagCapacity} / {BagCapacityLimit} ");
 
-        public static void MoveUp() => Position = (Position.x + 1, Position.y);
+        public static void MoveUp() => PlayerCoords = (PlayerCoords.x + 1, PlayerCoords.y);
 
-        public static void MoveRight() => Position = (Position.x, Position.y + 1);
+        public static void MoveRight() => PlayerCoords = (PlayerCoords.x, PlayerCoords.y + 1);
 
-        public static void MoveDown() => Position = (Position.x - 1, Position.y);
+        public static void MoveDown() => PlayerCoords = (PlayerCoords.x - 1, PlayerCoords.y);
 
-        public static void MoveLeft() => Position = (Position.x, Position.y - 1);
+        public static void MoveLeft() => PlayerCoords = (PlayerCoords.x, PlayerCoords.y - 1);
 
         public static void Pick()
         {
-
         }
 
         public static void LookAround()
         {
-
         }
 
         public static void Eat()
         {
-
         }
 
-        
-        //TO DO: словарь строка-действие
 
         public void ChangePlayerState()
         {
             string cmd = Console.ReadLine();
-
-
         }
     }
 }

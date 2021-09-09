@@ -1,18 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Text;
 
 namespace Roguelike
 {
     internal class Room : GameObject
     {
-        public (int x, int y) CurrentRoom { get; set; } = (Level.seed.Next(Level.MeshSize), Level.seed.Next(Level.MeshSize));
+        public new string ID { get; private set; } = "Room";
+
+        public (int x, int y) CurrentRoomCoords { get; set; } =
+            (Level.seed.Next(Level.MeshSize), Level.seed.Next(Level.MeshSize));
+
+        public string Name
+        {
+            get => locations[Level.seed.Next(0, locations.Length)];
+            private set => locations[Level.seed.Next(0, locations.Length)] = value;
+        }
+
+        public string Description { get; private set; }
+
+        public string[] locations =
+        {
+            "forest",
+            "lake",
+            "river",
+            "house",
+            "mountain",
+            "town",
+            "inn",
+            "cave",
+            "tower",
+        };
+
 
         public Room()
         {
-            CurrentRoom = (CurrentRoom.x, CurrentRoom.y);
+            CurrentRoomCoords = (CurrentRoomCoords.x, CurrentRoomCoords.y);
+            Init();
         }
 
+        public void Init()
+        {
+        }
 
+        public static Room[,] GenerateRooms()
+        {
+            var world = new Room[Level.MeshSize, Level.MeshSize];
+            for (int i = 0; i < world.GetLength(0); ++i)
+            {
+                for (int j = 0; j < world.GetLength(1); ++j)
+                {
+                    world[i, j] = new Room();
+                }
+            }
+
+            return world;
+        }
+
+        public bool MoveNext()
+        {
+            return true;
+        }
     }
 }
