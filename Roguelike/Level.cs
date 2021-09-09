@@ -13,6 +13,8 @@ namespace Roguelike
         public static Random seed = new Random();
 
         public string ID { get; private set; } = "Level";
+
+        public static int MeshSize { get; private set; } = seed.Next(8,16);
         public static int X { get; private set; } = seed.Next(1, 11);
         public static int Y { get; private set; } = seed.Next(1, 11);
 
@@ -20,12 +22,21 @@ namespace Roguelike
 
         public Level()
         {
-            Player player = new Player();
             
-
+            Init(out Room initialRoom);
+            
         }
 
-        public static void GetLevelState() => Console.WriteLine($"{X} by {Y} level inited.");
+        public void Init(out Room initialRoom)
+        {
+            Player player = new Player();
+            Room[,] rooms = new Room[MeshSize, MeshSize];
+            initialRoom = rooms[seed.Next(rooms.GetLength(0)), seed.Next(rooms.GetLength(1))];
+            player.Init(initialRoom);
+            
+        }
+
+        public static void GetLevelState() => Console.WriteLine($"{MeshSize} by {MeshSize} level inited.");
 
         public virtual void GetInfo() => Console.WriteLine($"{ID}");
     }
