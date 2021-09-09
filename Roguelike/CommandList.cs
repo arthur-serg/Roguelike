@@ -4,17 +4,17 @@ using System.Text;
 
 namespace Roguelike
 {
-    internal class CommandList : Player
+    internal class CommandList 
     {
         public Dictionary<string, Action> Commands = new()
         {
-            {"up", MoveUp},
-            {"down", MoveDown},
-            {"right", MoveRight},
-            {"left", MoveLeft},
-            {"pick", Pick},
-            {"look", LookAround},
-            {"eat", Eat}
+            {"up", Player.MoveUp},
+            {"down", Player.MoveDown},
+            {"right", Player.MoveRight},
+            {"left", Player.MoveLeft},
+            {"pick", Player.Pick},
+            {"look", Player.LookAround},
+            {"eat", Player.Eat}
         };
         
         
