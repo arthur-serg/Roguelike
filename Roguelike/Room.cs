@@ -7,10 +7,30 @@ namespace Roguelike
 {
     internal class Room : GameObject
     {
+        public Room Up
+        {
+            get
+            {
+
+            }
+            set
+            {
+
+            }
+        }
+
+        public Room Right { get; set; }
+        public Room Down { get; set; }
+        public Room Left { get; set; }
+
+        
         public new string ID { get; private set; } = "Room";
 
         public (int x, int y) CurrentRoomCoords { get; set; } =
             (Level.seed.Next(Level.MeshSize), Level.seed.Next(Level.MeshSize));
+
+        
+        
 
         public string Name
         {
@@ -37,14 +57,15 @@ namespace Roguelike
         public Room()
         {
             CurrentRoomCoords = (CurrentRoomCoords.x, CurrentRoomCoords.y);
-            Init();
+            
         }
 
-        public void Init()
+        public void Init(out Room initialRoom)
         {
+            initialRoom = GenerateRooms()[Level.seed.Next(0, Level.MeshSize), Level.seed.Next(0, Level.MeshSize)];
         }
 
-        public static Room[,] GenerateRooms()
+        public Room[,] GenerateRooms()
         {
             var world = new Room[Level.MeshSize, Level.MeshSize];
             for (int i = 0; i < world.GetLength(0); ++i)

@@ -10,49 +10,49 @@
   <Class Name="Roguelike.AliveObject">
     <Position X="4" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
       <FileName>AliveObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Roguelike.Player">
-    <Position X="4" Y="3.25" Width="1.5" />
+    <Position X="3.75" Y="3.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AQEACAAAEAAAAAAgAgAABAAAAAAAAAA6QAAABAAAAAA=</HashCode>
+      <HashCode>AQEACAAAEAAIgAAAAwAABAAAAAAAAAA4QAACBAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Roguelike.NonLivingObject">
     <Position X="6.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAggAAAAAAAAAQAAEAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>NonLivingObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Roguelike.Level">
-    <Position X="9" Y="1.75" Width="1.5" />
+    <Position X="8.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAwAAAAAAAAAAAAAAEAEAAAAAAAAAAYAA=</HashCode>
+      <HashCode>AAAAAAABAAAAwAAAAAAAAAAAAAAEAEAAAAACAAAAYAA=</HashCode>
       <FileName>Level.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Roguelike.Loot">
-    <Position X="6.25" Y="3.25" Width="1.5" />
+    <Position X="6.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQCAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAQCAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Loot.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Roguelike.CommandList">
-    <Position X="1" Y="1.75" Width="1.5" />
+    <Position X="0.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CommandList.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Roguelike.Room">
-    <Position X="11.5" Y="1.75" Width="1.5" />
+    <Position X="11" Y="1.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAQAAggBAGAAAEAAQCAAAAAAAAIBACAAAAAAA=</HashCode>
       <FileName>Room.cs</FileName>
     </TypeIdentifier>
   </Class>

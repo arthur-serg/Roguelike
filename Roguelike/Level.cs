@@ -26,7 +26,7 @@ namespace Roguelike
 
         public void Init(out Room initialRoom)
         {
-            var rooms = Room.GenerateRooms();
+            var rooms = new Room[MeshSize,MeshSize];
             initialRoom = rooms[seed.Next(rooms.GetLength(0)), seed.Next(rooms.GetLength(1))];
         }
 
